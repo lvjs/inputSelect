@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+	<meta charset="utf-8">
+	<title>InputSelect</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="lvjs">
+
+	<!-- Le styles -->
+	<link href="css/reasy-ui.css" rel="stylesheet">
+	<link href="css/prettify.css" rel="stylesheet">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	<script src="js/libs/html5shiv.js"></script>
+	<![endif]-->
+
+<body>
+	<div class="wrap">
+		<div class="container">
+			<div class="row" id="main">
+				<div class="main-content" >
+					<h1>InputSelect 使用演示</h1>
+					<section id="drop-downs" class="section test">
+						<p>在自定义类型输入框中，开发人员可为用户预设可选值(下拉菜单内容)，用户也可自定义取值(通过输入框进行输入)</p>
+						<legend>生成单个输入框</legend>
+						<div class="control-group">
+							<div id="select-test"></div>
+						</div>
+						<pre>
+// html 代码
+&lt;div id="select-test"&gt; &lt;/div&gt;
+
+// js 代码
+&lt;script&gt;
+/*下拉列表接口*/
+//seeAsTrans==false,下拉表中显示opt2.val，点击给输入框赋值option2(点击显示不一致)，
+//给隐藏输入框赋值option2
+//seeAsTrans==true,下拉表中显示opt2.val，点击给输入框赋值opt2.val(点击显示一致)，
+//给隐藏输入框赋值option2
+    
+$('#select-test').toSelect({  
+  "initVal": "select", //初始化时显示值
+  "editable": "1",    //editable: 是否可输入  0：禁用输入， 1： 可输入
+  "seeAsTrans": true,//不写默认为false
+  "options":[{
+    "option1":"option1",  //下拉列表参数
+    "option2":"opt2.val",
+    "6-12": "上午",//seeAsTrans作用演示，用户点击上午时，隐藏输入框向后台传6-12
+    "option3":"", //键值对中，值为空时，应用键名作为值
+    ".divider":".divider",   //分割线
+    ".hand-set":"手动设定"
+  }]
+});
+&lt;/script&gt;
+			</pre>
+						<br />
+						<div class="control-group">
+							<legend>生成一组输入框</legend>
+							<div class="select-classbased"></div>
+							<div class="select-classbased"></div>
+							<div class="select-classbased"></div>
+						</div>
+						<pre>
+// html 代码
+&lt;div class="select-classbased"&gt;&lt;/div&gt;
+&lt;div class="select-classbased"&gt;&lt;/div&gt;
+&lt;div class="select-classbased"&gt;&lt;/div&gt;
+
+// js 代码
+&lt;script&gt;
+  $('.select-classbased').toSelect({
+    "initVal": "by class",
+    "editable": "1",
+    "options":[{
+      "option1":"option1",
+      "option2":"option2",
+      "option3":"",
+      ".divider":".divider",
+      ".hand-set":"手动设定"
+    },
+    //可以为每个输入框指定不同的选项表，如果指定数少于预期，选项表将会被循环（交替）使用
+    {
+      "option1":"hi, let's rock&roll",
+      "option2":"la bonjour",
+      ".divider":".divider",
+      ".hand-set":"手动设定"
+    }]
+  });
+&lt;/script&gt;
+			</pre>
+						<br />
+						<div class="control-group">
+							<legend>给选项表添加或者删除选项</legend>
+							<div class="select-classbased"></div>
+						</div>
+						<pre>
+// html 代码								
+&lt;div class="select-classbased"&gt;&lt;/div&gt;
+
+// js 代码
+&lt;script&gt;
+  //示例中的输入框与byclass生成的第一个原来完全相同
+  //删除第二个选项
+  $('.select-classbased')[3].removeLi(1);
+  //在末尾添加一个新选项（目前只能在末尾添加）
+  $('.select-classbased')[3].appendLi({"new":"New York"});
+&lt;/script&gt;
+									</pre>
+					</section>
+					<footer>By lvjs @ webEasyTeam</footer>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /container -->
+
+	<!-- Le javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/inputSelect.js"></script>
+	<script src="js/prettify.js"></script>
+	<script src="js/initSelect.js"></script>
+</body>
+</html>
